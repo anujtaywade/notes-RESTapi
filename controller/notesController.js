@@ -12,7 +12,7 @@ let notes = [
   {
     "id": 3,
     "title": "Books to Read",
-    "content": "Atomic Habits, Deep Work, Clean Code xx"
+    "content": "Atomic Habits, Deep Work, Clean Code"
   }
 ]
 
@@ -22,5 +22,7 @@ exports.getAllNotes=(req,res)=>{
 
 exports.getNotebyId = (req,res)=>{
     let note = notes.find(n=>n.id ==req.params.id) 
-    note ? res.json(notes) : res.status(200).json({message : 'note not found'})
+    note ? res.json(note) : res.status(404).json({message : 'note not found'})
 }
+
+exports.
