@@ -4,6 +4,6 @@ const controller = require("../controller/notesController")
 
 router.get("/",controller.getAllNotes)
 router.get("/:id",controller.getNotebyId)
-
+router.post("/",controller.createNote)
 
 module.exports=router
