@@ -41,3 +41,17 @@ exports.createNote= (req,res)=>{
   notes.push(newNote)
   res.status(201).json(newNote)
 }
+
+exports.updatedNoteById = (req,res)=>{
+
+  const {title,content}= req.body
+  const id = parseInt (req.params.id)
+  const note = notes.find(n=>n.id===id)
+  if (!note){
+    return  res.status(404).json({message:"item not found"})
+  } 
+
+  if (title) note.title=title
+  if(content) note.content= content
+  res.json(note)
+}
