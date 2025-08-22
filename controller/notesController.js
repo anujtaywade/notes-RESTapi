@@ -55,3 +55,14 @@ exports.updatedNoteById = (req,res)=>{
   if(content) note.content= content
   res.json(note)
 }
+
+exports.deleteNoteById = (req,res)=>{
+  const id = parseInt(req.params.id)
+  const indexNote = notes.findIndex(n=>n.id===id)
+  if (indexNote===-1){
+    return res.status(404).json({message:"note not found"})
+  }
+
+  const deleteNote =notes.splice(indexNote,1)
+  res.json(deleteNote[0])
+}
